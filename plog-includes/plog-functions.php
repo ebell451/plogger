@@ -1971,11 +1971,8 @@ function plogger_init_search($arr) {
 			} else {
 				$path = $description = $comment = $caption = $term;
 			}
-			$query .= "
-			`path` LIKE '%$path%' OR
-			`description` LIKE '%$description%' OR
-			`comment` LIKE '%$comment%' OR
-			`caption` LIKE '%$caption%' OR ";
+            
+            $query .= "`caption` LIKE '%$caption%' OR ";
 		}
 
 		$query = substr($query, 0, strlen($query) - 3) .") ";
