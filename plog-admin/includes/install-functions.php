@@ -351,7 +351,7 @@ function create_tables() {
 	`id` int(11) NOT NULL auto_increment,
 	`thumbnail_id` int(11) NOT NULL DEFAULT '0',
 	PRIMARY KEY (`id`)"
-	,"Type=MyISAM $default_charset");
+	,"Engine=MyISAM $default_charset");
 
 	maybe_add_table(
 	PLOGGER_TABLE_PREFIX.'albums'
@@ -363,7 +363,7 @@ function create_tables() {
 	`thumbnail_id` int(11) NOT NULL default '0',
 	PRIMARY KEY (`id`),
 	INDEX pid_idx (`parent_id`)"
-	," Type=MyISAM $default_charset");
+	," Engine=MyISAM $default_charset");
 
 	maybe_add_table(
 	PLOGGER_TABLE_PREFIX.'pictures'
@@ -373,8 +373,8 @@ function create_tables() {
 	`caption` mediumtext NOT NULL,
 	`description` text NOT NULL,
 	`id` int(11) NOT NULL auto_increment,
-	`date_modified` timestamp(14) NOT NULL,
-	`date_submitted` timestamp(14) NOT NULL,
+	`date_modified` timestamp NOT NULL,
+	`date_submitted` timestamp NOT NULL,
 	`EXIF_date_taken` varchar(64) NOT NULL default '',
 	`EXIF_camera` varchar(64) NOT NULL default '',
 	`EXIF_shutterspeed` varchar(64) NOT NULL default '',
@@ -386,7 +386,7 @@ function create_tables() {
 	PRIMARY KEY (`id`),
 	INDEX pa_idx (`parent_album`),
 	INDEX pc_idx (`parent_collection`)"
-	,"Type=MyISAM $default_charset");
+	,"Engine=MyISAM $default_charset");
 
 	maybe_add_table(
 	PLOGGER_TABLE_PREFIX.'comments'
@@ -402,7 +402,7 @@ function create_tables() {
 	PRIMARY KEY (`id`),
 	INDEX pid_idx (`parent_id`),
 	INDEX approved_idx (`approved`)"
-	,"Type=MyISAM $default_charset");
+	,"Engine=MyISAM $default_charset");
 
 	maybe_add_table(
 	PLOGGER_TABLE_PREFIX.'config'
@@ -435,7 +435,7 @@ function create_tables() {
 	`thumb_nav_range` int(11) NOT NULL default '0',
 	`allow_fullpic` tinyint default '1',
 	PRIMARY KEY (`thumb_num`)"
-	,"Type=MyISAM $default_charset");
+	,"Engine=MyISAM $default_charset");
 
 	maybe_add_table(
 	PLOGGER_TABLE_PREFIX.'thumbnail_config'
@@ -445,7 +445,7 @@ function create_tables() {
 	`disabled` tinyint default '0',
 	`resize_option` tinyint default '2',
 	PRIMARY KEY (`id`)"
-	,"Type=MyISAM $default_charset");
+	,"Engine=MyISAM $default_charset");
 
 	/*maybe_add_table(
 	PLOGGER_TABLE_PREFIX.'tag2picture'
@@ -454,7 +454,7 @@ function create_tables() {
 	`tagdate` datetime default NULL,
 	KEY `tag_id` (`tag_id`),
 	KEY `picture_id` (`picture_id`)"
-	,"Type=MyISAM $default_charset");
+	,"Engine=MyISAM $default_charset");
 
 	maybe_add_table(
 	PLOGGER_TABLE_PREFIX.'tags'
@@ -465,7 +465,7 @@ function create_tables() {
 	PRIMARY KEY  (`id`),
 	UNIQUE `tag` (`tag`),
 	UNIQUE `urlified` (`urlified`)"
-	,"Type=MyISAM $default_charset");*/
+	,"Engine=MyISAM $default_charset");*/
 
 }
 
@@ -487,7 +487,7 @@ function configure_plogger($form) {
 		mysql_query($sql);
 	}
 
-	$config['gallery_url'] = 'http://'.$_SERVER['SERVER_NAME'].dirname(dirname($_SERVER['PHP_SELF']));
+	$config['gallery_url'] = 'http://'.$_SERVER['HTTP_HOST'].dirname(dirname($_SERVER['PHP_SELF']));
 	// Remove plog-admin/ from the end, if present .. is there a better way to determine the full url?
 	if (strpos($config['gallery_url'], 'plog-admin/')) {
 		$config['gallery_url'] = substr($config['gallery_url'], 0, strpos($config['gallery_url'], 'plog-admin/'));
