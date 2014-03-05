@@ -1,0 +1,24 @@
+iFrame Container
+================
+
+<iframe id="artfont" name="artfont" src="/artfont/" frameborder="0" scrolling="no" width="100%"></iframe> 
+<script type="text/javascript" src="/addon/iframe-resizer/jquery.iframeResizer.min.js"></script>
+<script type="text/javascript">
+jQuery('#artfont').iFrameResize({
+    log: false,
+    autoResize: true,
+    contentWindowBodyMargin:8,
+    doHeight:true,
+    doWidth:false,
+    enablePublicMethods:false,
+    interval:33,
+    scrolling:false,
+    callback:function(messageData){
+        jQuery('p#callback').html('<b>Frame ID:</b> '   + messageData.iframe.id + 
+                            ' <b>Height:</b> '     + messageData.height + 
+                            ' <b>Width:</b> '      + messageData.width +
+                            ' <b>Event type:</b> ' + messageData.type
+        );
+    }
+});
+</script>

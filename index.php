@@ -24,6 +24,7 @@
 <html xml:lang="<?php echo $language; ?>" lang="<?php echo $language; ?>" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php the_plogger_head(); ?>
+<script type="text/javascript" src="addon/iframe-resizer/iframeResizer.contentWindow.min.js"></script>
 </head>
 
 <body>
