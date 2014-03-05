@@ -1942,7 +1942,7 @@ function plogger_init_pictures($arr) {
 
 function plogger_init_search($arr) {
 	global $PLOGGER_DBH;
-	$terms = explode(' ', $arr['searchterms']);
+	$term = $arr['searchterms'];
 	$from = 0;
 	$limit = 20;
 
@@ -1958,28 +1958,18 @@ function plogger_init_search($arr) {
 	$query = " FROM `".PLOGGER_TABLE_PREFIX."pictures` p LEFT JOIN `".PLOGGER_TABLE_PREFIX."comments` c
 	ON p.`id` = c.`parent_id` ";
 
-	if ((count($terms) != 1) || ($terms[0] != '')) {
-		$query .= " WHERE ( ";
-		foreach ($terms as $term) {
-			$term = mysql_real_escape_string($term);
-			$multi_term = explode('+', $term);
-			if (count($multi_term)>1) {
-				$path = implode("%' AND `path` LIKE '%", $multi_term);
-				$description = implode("%' AND `description` LIKE '%", $multi_term);
-				$comment = implode("%' AND `comment` LIKE '%", $multi_term);
-				$caption = implode("%' AND `caption` LIKE '%", $multi_term);
-			} else {
-				$path = $description = $comment = $caption = $term;
-			}
-            
-            $query .= "`caption` LIKE '%$caption%' OR ";
-		}
+    if ($term != '') {
+        $query .= " WHERE ( ";
 
-		$query = substr($query, 0, strlen($query) - 3) .") ";
-	} else {
-		// No search terms? No results either
-		$query .= " WHERE 1 = 0";
-	}
+        $term = trim(mysql_real_escape_string($term));
+        $caption = $term;
+        $query .= "`caption` LIKE '%$caption%'";
+
+        $query = $query . ") ";
+    } else {
+        // No search terms? No results either
+        $query .= " WHERE 1 = 0";
+    }
 
 	$sort_fields = array('date_submitted','id');
 	$sortby = 'date_submitted';
