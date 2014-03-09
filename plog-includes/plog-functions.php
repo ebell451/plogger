@@ -383,7 +383,7 @@ function generate_search_box() {
 
 	$output = '<form id="plogsearch" action="'.generate_url('search').'" method="get">
 				<div id="search-box">
-					<input type="text" id="searchterms" name="searchterms" />
+					<input type="text" id="searchterms" name="searchterms" placeholder="输入想要寻找的文字..." />
 					<input class="submit" type="submit" value="'.plog_tr('搜索').'" />
 				</div>';
 	if (!$config['use_mod_rewrite']) {

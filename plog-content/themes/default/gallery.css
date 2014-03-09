@@ -52,7 +52,7 @@ input.submit {
 	border: none;
 	color: #fff;
 	font-family: verdana, arial, sans-serif;
-	font-size: 85%;
+	font-size: 18px;
 	font-weight: normal;
 	padding: 3px 5px;
 	cursor: pointer;
@@ -299,8 +299,19 @@ a.nav-link-img-next {
 }
 
 #search-box {
-	text-align: right;
+	text-align: center;
 }
+
+#search-box  #searchterms {
+    width: 200px;
+    height: 30px;
+}
+
+#search-box  .submit {
+    width: 60px;
+    height: 30px;
+}
+
 
 #jump-search-container {
 	text-align: right; 

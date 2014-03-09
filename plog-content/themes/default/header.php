@@ -3,7 +3,6 @@
 <div id="plog-wrapper">
 	<table id="header-table">
 		<tr>
-			<td><?php echo generate_header(); ?></td>
 			<td id="jump-search-container">
 				<?php echo generate_search_box(); ?>
 			</td>
