@@ -384,7 +384,7 @@ function generate_search_box() {
 	$output = '<form id="plogsearch" action="'.generate_url('search').'" method="get">
 				<div id="search-box">
 					<input type="text" id="searchterms" name="searchterms" />
-					<input class="submit" type="submit" value="'.plog_tr('Search').'" />
+					<input class="submit" type="submit" value="'.plog_tr('搜索').'" />
 				</div>';
 	if (!$config['use_mod_rewrite']) {
 		$output .= "\n\t\t\t\t\t" . '<input type="hidden" name="level" value="search" />';
@@ -443,11 +443,11 @@ function preload_album_images() {
 	// Function for generating the slideshow interface
 function generate_slideshow_nav($pre_pre='', $pre='', $post='', $post_post='') {
 	global $config, $thumbnail_config;
-	$large_link = $pre.'<a accesskey="v" title="'.plog_tr('View Large Image').'" href="javascript:slides.hotlink()"><img src="'.THEME_URL.'images/search.gif" width="16" height="16" alt="'. plog_tr('View Large Image').'" /></a>&nbsp;&nbsp;'.$post;
-	$prev_url = $pre.'<a accesskey="," title="' .plog_tr('Previous Image').'" href="javascript:slides.previous();"><img src="'.THEME_URL.'images/rewind.gif" width="16" height="16" alt="'.plog_tr('Previous Image').'" /></a>&nbsp;&nbsp;'.$post;
-	$stop_url = $pre.'<a accesskey="x" title="'. plog_tr('Stop Slideshow').'" href="javascript:slides.pause();"><img src="'.THEME_URL.'images/stop.gif" width="16" height="16" alt="'.plog_tr('Stop Slideshow').'" /></a>&nbsp;&nbsp;'.$post;
-	$play_url = $pre.'<a accesskey="s" title="'. plog_tr('Start Slideshow').'" href="javascript:slides.play();"><img src="'.THEME_URL.'images/play.gif" width="16" height="16" alt="'.plog_tr('Start Slideshow').'" /></a>&nbsp;&nbsp;&nbsp;'.$post;
-	$next_url = $pre.'<a accesskey="." title="'.plog_tr('Next Image').'" href="javascript:slides.next();"><img src="'.THEME_URL.'images/fforward.gif" width="16" height="16" alt="'.plog_tr('Next Image').'" /></a>'.$post;
+	$large_link = $pre.'<a accesskey="v" title="'.plog_tr('查看原图').'" href="javascript:slides.hotlink()"><img src="'.THEME_URL.'images/search.gif" width="16" height="16" alt="'. plog_tr('View Large Image').'" /></a>&nbsp;&nbsp;'.$post;
+	$prev_url = $pre.'<a accesskey="," title="' .plog_tr('上一张').'" href="javascript:slides.previous();"><img src="'.THEME_URL.'images/rewind.gif" width="16" height="16" alt="'.plog_tr('Previous Image').'" /></a>&nbsp;&nbsp;'.$post;
+	$stop_url = $pre.'<a accesskey="x" title="'. plog_tr('暂停滚动').'" href="javascript:slides.pause();"><img src="'.THEME_URL.'images/stop.gif" width="16" height="16" alt="'.plog_tr('Stop Slideshow').'" /></a>&nbsp;&nbsp;'.$post;
+	$play_url = $pre.'<a accesskey="s" title="'. plog_tr('继续滚动').'" href="javascript:slides.play();"><img src="'.THEME_URL.'images/play.gif" width="16" height="16" alt="'.plog_tr('Start Slideshow').'" /></a>&nbsp;&nbsp;&nbsp;'.$post;
+	$next_url = $pre.'<a accesskey="." title="'.plog_tr('下一张').'" href="javascript:slides.next();"><img src="'.THEME_URL.'images/fforward.gif" width="16" height="16" alt="'.plog_tr('Next Image').'" /></a>'.$post;
 	$output = '<div class="large-thumb-toolbar" style="width: '.$thumbnail_config[THUMB_LARGE]['size'].'px;">'.$pre_pre.$large_link.$prev_url.$stop_url.$play_url.$next_url.$post_post.'</div><!-- /large-thumb-toolbar -->' . "\n";
 	return $output;
 }
@@ -2244,10 +2244,10 @@ function plogger_slideshow_link() {
 	if ($GLOBALS['plogger_mode'] != 'slideshow' && $GLOBALS['plogger_level'] != '404') {
 		if ($GLOBALS['plogger_level'] == 'album') {
 			$ss_url = generate_url('album', $GLOBALS['plogger_id'], array('mode' => 'slideshow'));
-			$ss_tag = '<a href="'.$ss_url.'">'.plog_tr('View as Slideshow').'</a>';
+			$ss_tag = '<a href="'.$ss_url.'">'.plog_tr('幻灯片播放').'</a>';
 		} else if ($GLOBALS['plogger_level'] == 'search' && plogger_has_pictures()) {
 			$ss_url = generate_url('search', -1, array('searchterms' => urlencode($_REQUEST['searchterms']), 'mode' => 'slideshow'));
-			$ss_tag = '<a href="'.$ss_url.'">'.plog_tr('View as Slideshow').'</a>';
+			$ss_tag = '<a href="'.$ss_url.'">'.plog_tr('幻灯片播放').'</a>';
 		}
 	}
 	return $ss_tag;
@@ -2969,9 +2969,9 @@ function plogger_get_next_picture_link() {
 	$next_url = plogger_get_next_picture_url();
 	if ($next_url)
 	if ($config['embedded'] == 0) {
-		$next_link = '<a id="next-button" accesskey="." href="'.$next_url.'">'.plog_tr('Next').' &raquo;</a>';
+		$next_link = '<a id="next-button" accesskey="." href="'.$next_url.'">'.plog_tr('下一张').' &raquo;</a>';
 	} else {
-		$next_link = '<a id="next-button" accesskey="." href="'.$next_url.'">'.plog_tr('Next').' &raquo;</a>';
+		$next_link = '<a id="next-button" accesskey="." href="'.$next_url.'">'.plog_tr('下一张').' &raquo;</a>';
 	} else
 		$next_link = '';
 	return $next_link;
@@ -2982,9 +2982,9 @@ function plogger_get_prev_picture_link() {
 	$prev_url = plogger_get_prev_picture_url();
 	if ($prev_url)
 	if ($config['embedded'] == 0) {
-		$prev_link = '<a id="prev-button" accesskey="," href="'.$prev_url.'">&laquo; '.plog_tr('Previous').'</a>';
+		$prev_link = '<a id="prev-button" accesskey="," href="'.$prev_url.'">&laquo; '.plog_tr('上一张').'</a>';
 	} else {
-		$prev_link = '<a id="prev-button" accesskey="," href="'.$prev_url.'">&laquo; '.plog_tr('Previous').'</a>';
+		$prev_link = '<a id="prev-button" accesskey="," href="'.$prev_url.'">&laquo; '.plog_tr('上一张').'</a>';
 	} else
 		$prev_link = '';
 	return $prev_link;

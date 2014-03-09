@@ -5,8 +5,6 @@
 		<tr>
 			<td><?php echo generate_header(); ?></td>
 			<td id="jump-search-container">
-				<?php echo generate_jump_menu(); ?>
-				<br />
 				<?php echo generate_search_box(); ?>
 			</td>
 		</tr>

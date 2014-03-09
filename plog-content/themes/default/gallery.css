@@ -106,7 +106,8 @@ table {
 #breadcrumbs {
 	margin: 0;
 	padding: 2px;
-	border-top: 1px solid #cdcdcd;
+
+
 	border-bottom: 1px solid #cdcdcd;
 }
 
@@ -187,6 +188,10 @@ ul.slides { /* this is the overall thumbnail container in collection/album view 
 	letter-spacing: 2px;
 	margin-left: 4px;
 	padding-bottom: 2px;
+}
+
+#picture-caption {
+    text-align: center;
 }
 
 #prev-link-container {
@@ -321,8 +326,6 @@ a.nav-link-img-next {
 	padding: 2px;
 	margin: 0;
 	clear: both;
-	border-top: 1px solid #cdcdcd;
-	border-bottom: 1px solid #cdcdcd;
 	line-height: 2.5em;
 }
 

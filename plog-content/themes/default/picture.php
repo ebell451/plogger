@@ -12,7 +12,6 @@
 				<table id="caption-date-table">
 					<tr>
 						<td><h2 id="picture-caption"><?php echo plogger_get_picture_caption(); ?></h2></td>
-						<td class="align-right"><h2 class="date"><?php echo plogger_get_picture_date()?></h2></td>
 					</tr>
 				</table><!-- /caption-date-table -->
 
@@ -24,12 +23,8 @@
 				</table><!-- /prev-next-table -->
 
 				<div id="picture-holder">
-					<a accesskey="v" href="<?php echo plogger_get_source_picture_url(); ?>"><img class="photos-large" src="<?php echo plogger_get_picture_thumb(THUMB_LARGE); ?>" width="<?php echo $thumb_width; ?>" height="<?php echo $thumb_height; ?>" title="<?php echo plogger_get_picture_caption('clean'); ?>" alt="<?php echo plogger_get_picture_caption('clean'); ?>" /></a>
+					<img class="photos-large" src="<?php echo plogger_get_picture_thumb(THUMB_LARGE); ?>" width="<?php echo $thumb_width; ?>" height="<?php echo $thumb_height; ?>" title="<?php echo plogger_get_picture_caption('clean'); ?>" alt="<?php echo plogger_get_picture_caption('clean'); ?>" />
 					<p id="description"><?php echo plogger_get_picture_description(); ?></p>
-					<p id="exif-toggle"><?php echo plogger_get_detail_link(); ?></p>
-					<div id="exif-data-container">
-<?php echo generate_exif_table(plogger_get_picture_id()); ?>
-					</div><!-- /exif-data-container -->
 				</div><!-- /picture-holder -->
 
 			</div><!-- /big-picture-container -->
